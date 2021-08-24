@@ -117,9 +117,8 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    /* margin-top: -15px; */
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -440,7 +439,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  min-width: 100%;
 }
 .hero-content::after {
   content: "";
@@ -500,6 +499,9 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .header-logo {
+    width: 80%;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -507,7 +509,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
   }
   .hero-content::after {
     content: unset;
@@ -516,7 +518,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     white-space: normal;
   }
   .hero-text {
