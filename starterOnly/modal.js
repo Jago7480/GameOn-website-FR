@@ -69,24 +69,24 @@ participation.onfocus = function() {
 firstname.onblur = function() {
   var el3 = document.querySelector('.invalid-prenom');
   el3.style.display = "none";
- };
+};
  
  lastname.onblur = function() {
    var el4 = document.querySelector('.invalid-nom');
    el4.style.display = "none";
- };
+};
  
  email.onblur = function() {
    var el5 = document.querySelector('.invalid-mail');
    el5.style.display = "none";
- };
+};
  
  ddn.onblur = function() {
    var el5 = document.querySelector('.invalid-ddn');
    el5.style.display = "none";
- };
+};
  
  participation.onblur = function() {
    var el5 = document.querySelector('.invalid-participation');
    el5.style.display = "none";
- };
+};
