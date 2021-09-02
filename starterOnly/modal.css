@@ -26,6 +26,12 @@ p {
   padding: 0.5vw;
 }
 
+h6 {
+  font-size: 14px;
+  font-weight: normal;
+  color: rgb(255, 109, 109);
+}
+
 img {
   padding-right: 1rem;
 }
@@ -352,6 +358,36 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+/* invalid form css */
+.invalid-prenom {
+  display: none;
+}
+
+.invalid-nom {
+  display: none;
+}
+
+.invalid-mail {
+  display: none;
+}
+
+.invalid-ddn {
+  display: none;
+}
+
+.invalid-participation {
+  display: none;
+}
+
+.invalid-villes {
+  display: none;
+}
+
+.invalid-checkbox {
+  display: none;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
