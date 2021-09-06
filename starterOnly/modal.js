@@ -31,62 +31,63 @@ el.addEventListener('click', function () {
 });
 
 //var rename
-var firstname = document.getElementById("first");
-var lastname = document.getElementById("last");
-var email = document.getElementById("email");
-var ddn = document.getElementById("birthdate");
-var participation = document.getElementById("quantity");
-var villes = document.getElementById("location");
-var checkbox = document.getElementById("checkbox1");
+// var firstname = document.getElementById("first");
+// var lastname = document.getElementById("last");
+// var email = document.getElementById("email");
+// var ddn = document.getElementById("birthdate");
+// var participation = document.getElementById("quantity");
+// var villes = document.getElementById("location");
+// var checkbox = document.getElementById("checkbox1");
 
-//When the user click on the field, show the message box
-firstname.onfocus = function() {
- var el3 = document.querySelector('.invalid-prenom');
- el3.style.display = "block";
-};
+//
 
-lastname.onfocus = function() {
-  var el4 = document.querySelector('.invalid-nom');
-  el4.style.display = "block";
-};
+document.querySelector(".btn-submit").addEventListener("click", function(event){
+  event.preventDefault(); // Prevent refresh
 
-email.onfocus = function() {
-  var el5 = document.querySelector('.invalid-mail');
-  el5.style.display = "block";
-};
+  const firstnameValue = document.querySelector("#first").value;
+  const lastnameValue = document.querySelector("#last").value;
+  const emailValue = document.querySelector("#email").value;
+  const ddnValue = document.querySelector("#birthdate").value;
+  const participationValue = document.querySelector("#quantity").value;
+  const villesValue = document.querySelector("#location").value;
+  const checkboxValue = document.querySelector("#checkbox1").value;
 
-ddn.onfocus = function() {
-  var el5 = document.querySelector('.invalid-ddn');
-  el5.style.display = "block";
-};
+  const verifFirstname = verifFirstname(firstnameValue);
+  const verifLastname = verifLastname(lastnameValue);
+  const verifEmail = verifEmail(emailValue);
+  const verifDdn = verifDdn(ddnValue);
+  const verifParticipation = verifParticipation(participationValue);
+  const verifVilles = verifVilles(villesValue);
+  const verifCheckbox = verifCheckbox(checkboxValue);
 
-participation.onfocus = function() {
-  var el5 = document.querySelector('.invalid-participation');
-  el5.style.display = "block";
-};
+  if(verifFirstname === true && verifLastname === true && verifEmail === true && verifDdn === true && verifParticipation === true && verifVilles === true && verifCheckbox === true){
+    var el3 = document.querySelector('.modal-valid');
+    el3.style.display = "block";
+    
+    var el4 = document.querySelector('.formData'); // Est "sensé" retirer tous le formulaire pour ne laisser que le message de validation
+    el4.style.display = "none";
+  }
 
-//When the user click outside of the field, hide the message box
-firstname.onblur = function() {
-  var el3 = document.querySelector('.invalid-prenom');
-  el3.style.display = "none";
-};
- 
- lastname.onblur = function() {
-   var el4 = document.querySelector('.invalid-nom');
-   el4.style.display = "none";
-};
- 
- email.onblur = function() {
-   var el5 = document.querySelector('.invalid-mail');
-   el5.style.display = "none";
-};
- 
- ddn.onblur = function() {
-   var el5 = document.querySelector('.invalid-ddn');
-   el5.style.display = "none";
-};
- 
- participation.onblur = function() {
-   var el5 = document.querySelector('.invalid-participation');
-   el5.style.display = "none";
-};
+});
+
+function verifFirstname (firstname){
+
+  if(firstname === "" || firstname.length < 2){
+
+    var el5 = document.querySelector('.invalid-prenom');
+    el5.style.display = "block";
+  }
+
+  return true;
+}
+
+function verifLastname (lastname){
+
+  if(lastname === "" || lastname.length < 2){
+
+    var el5 = document.querySelector('.invalid-nom');
+    el5.style.display = "block";
+  }
+
+  return true;
+}
