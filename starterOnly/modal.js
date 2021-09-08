@@ -42,7 +42,7 @@ el.addEventListener('click', function () {
 //
 
 document.querySelector(".btn-submit").addEventListener("click", function(event){
-  event.preventDefault(); // Prevent refresh
+  event.preventDefault(); // Évite le raffraichissement et la disparition de l'avancée du formulaire
 
   const firstnameValue = document.querySelector("#first").value;
   const lastnameValue = document.querySelector("#last").value;
@@ -60,6 +60,8 @@ document.querySelector(".btn-submit").addEventListener("click", function(event){
   const verifVilles = verifVilles(villesValue);
   const verifCheckbox = verifCheckbox(checkboxValue);
 
+
+  //Processus de validation de chaque éléments, si tout est validé, affiche le message dans modal-valid
   if(verifFirstname === true && verifLastname === true && verifEmail === true && verifDdn === true && verifParticipation === true && verifVilles === true && verifCheckbox === true){
     var el3 = document.querySelector('.modal-valid');
     el3.style.display = "block";
@@ -70,7 +72,7 @@ document.querySelector(".btn-submit").addEventListener("click", function(event){
 
 });
 
-function verifFirstname (firstname){
+function verifFirstname (firstname){ //vérification du prénom
 
   if(firstname === "" || firstname.length < 2){
 
@@ -81,7 +83,7 @@ function verifFirstname (firstname){
   return true;
 }
 
-function verifLastname (lastname){
+function verifLastname (lastname){ //vérification du nom
 
   if(lastname === "" || lastname.length < 2){
 
@@ -90,4 +92,58 @@ function verifLastname (lastname){
   }
 
   return true;
+}
+
+function verifEmail (email){ //vérification du mail
+
+  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if(email.value.match(mailformat))
+  {
+    return true;
+  }
+  else
+  {
+    var el6 = document.querySelector('.invalid-mail');
+    el5.style.display = "block";
+  }
+}
+
+function verifDdn (ddn){ //vérification de la date de naissance
+
+  if(ddn === ""){
+
+    var el5 = document.querySelector('.invalid-ddn');
+    el5.style.display = "block";
+  }
+
+  return true;
+}
+
+function verifParticipation (participation){ //vérification des participations
+
+  if(participation === ""){
+
+    var el6 = document.querySelector('.invalid-particioation');
+    el6.style.display = "block";
+  }
+
+  return true;
+}
+
+function verifVilles (villes){ //vérification de la ville
+
+  if(villes === ""){
+
+    var el7 = document.querySelector('.invalid-villes');
+    el7.style.display = "block";
+  }
+
+  return true;
+}
+
+function verifCheckbox (checkbox){ //vérification de la case obligatoire à cocher
+
+  if(document.getElementById("#checkbox1").checked === true)
+
+  return false;
 }
