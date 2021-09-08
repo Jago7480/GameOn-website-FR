@@ -132,7 +132,7 @@ function verifParticipation (participation){ //vérification des participations
 
 function verifVilles (villes){ //vérification de la ville
 
-  if(villes === ""){
+  if(document.querySelector('#location1').checked = false) || (document.querySelector('#location2').checked = false) || (document.querySelector('#location3').checked = false) || (document.querySelector('#location4').checked = false) || (document.querySelector('#location5').checked = false) || (document.querySelector('#location6').checked = false){
 
     var el7 = document.querySelector('.invalid-villes');
     el7.style.display = "block";
