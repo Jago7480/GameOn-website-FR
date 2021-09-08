@@ -42,7 +42,7 @@ el.addEventListener('click', function () {
 //
 
 document.querySelector(".btn-submit").addEventListener("click", function(event){
-  event.preventDefault(); // Évite le raffraichissement et la disparition de l'avancée du formulaire
+  // event.preventDefault(); // Évite le raffraichissement et la disparition de l'avancée du formulaire
 
   const firstnameValue = document.querySelector("#first").value;
   const lastnameValue = document.querySelector("#last").value;
