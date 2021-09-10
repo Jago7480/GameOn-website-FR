@@ -168,6 +168,10 @@ main {
   display: none;
 }
 
+.formulaire {
+  display: block;
+}
+
 .button {
   background: #fe142f;
   margin-top: 0.5em;
