@@ -26,6 +26,10 @@ p {
   padding: 0.5vw;
 }
 
+h5 {
+  font-size: 18px;
+}
+
 h6 {
   font-size: 14px;
   font-weight: normal;
@@ -166,6 +170,7 @@ main {
 
 .modal-valid {
   display: none;
+  text-align: center;
 }
 
 .formulaire {
