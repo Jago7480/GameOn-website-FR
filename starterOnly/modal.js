@@ -30,39 +30,27 @@ el.addEventListener('click', function () {
   el2.style.display = "none";
 });
 
-//var rename
-// var firstname = document.getElementById("first");
-// var lastname = document.getElementById("last");
-// var email = document.getElementById("email");
-// var ddn = document.getElementById("birthdate");
-// var participation = document.getElementById("quantity");
-// var villes = document.getElementById("location");
-// var checkbox = document.getElementById("checkbox1");
-
-//
-
 document.querySelector(".btn-submit").addEventListener("click", function(event){
-  // event.preventDefault(); // Évite le raffraichissement et la disparition de l'avancée du formulaire
+  event.preventDefault(); // Évite le raffraichissement et la disparition de l'avancée du formulaire
 
   const firstnameValue = document.querySelector("#first").value;
   const lastnameValue = document.querySelector("#last").value;
   const emailValue = document.querySelector("#email").value;
   const ddnValue = document.querySelector("#birthdate").value;
   const participationValue = document.querySelector("#quantity").value;
-  const villesValue = document.querySelector("#location").value;
   const checkboxValue = document.querySelector("#checkbox1").value;
 
-  const verifFirstname = verifFirstname(firstnameValue);
-  const verifLastname = verifLastname(lastnameValue);
-  const verifEmail = verifEmail(emailValue);
-  const verifDdn = verifDdn(ddnValue);
-  const verifParticipation = verifParticipation(participationValue);
-  const verifVilles = verifVilles(villesValue);
-  const verifCheckbox = verifCheckbox(checkboxValue);
+
+  // const verifLastname = verifLastname(lastnameValue);
+  // const verifEmail = verifEmail(emailValue);
+  // const verifDdn = verifDdn(ddnValue);
+  // const verifParticipation = verifParticipation(participationValue);
+  // const verifVilles = verifVilles(villesValue);
+  // const verifCheckbox = verifCheckbox(checkboxValue);
 
 
   //Processus de validation de chaque éléments, si tout est validé, affiche le message dans modal-valid
-  if(verifFirstname === true && verifLastname === true && verifEmail === true && verifDdn === true && verifParticipation === true && verifVilles === true && verifCheckbox === true){
+  if(verifFirstname(firstnameValue) === true && verifLastname(lastnameValue) === true && verifDdn(ddnValue) === true && verifParticipation(participationValue) === true && verifVilles() === true && verifCheckbox(checkboxValue) === true){
     var el3 = document.querySelector('.modal-valid');
     el3.style.display = "block";
     
@@ -72,12 +60,19 @@ document.querySelector(".btn-submit").addEventListener("click", function(event){
 
 });
 
-function verifFirstname (firstname){ //vérification du prénom
+function verifFirstname (firstname){ //vérification du prénom, suivre ce principe(on l'a fait en cours)
+
+  var el5 = document.querySelector('.invalid-prenom');
 
   if(firstname === "" || firstname.length < 2){
 
-    var el5 = document.querySelector('.invalid-prenom');
-    el5.style.display = "block";
+    return el5.style.display = "block";
+
+  }else{
+
+     el5.style.display = "none";
+     return true;
+
   }
 
   return true;
@@ -85,13 +80,19 @@ function verifFirstname (firstname){ //vérification du prénom
 
 function verifLastname (lastname){ //vérification du nom
 
+  var el5 = document.querySelector('.invalid-nom');
+
   if(lastname === "" || lastname.length < 2){
 
-    var el5 = document.querySelector('.invalid-nom');
-    el5.style.display = "block";
+    return el5.style.display = "block";
+
+  }else{
+
+      el5.style.display ="none";
+      return true;
   }
 
-  return true;
+  return true
 }
 
 function verifEmail (email){ //vérification du mail
@@ -130,16 +131,41 @@ function verifParticipation (participation){ //vérification des participations
   return true;
 }
 
-// function verifVilles (villes){ //vérification de la ville
+function verifVilles(){ //vérification de la ville
 
-//   if(document.querySelector('#location1').checked = false) || (document.querySelector('#location2').checked = false) || (document.querySelector('#location3').checked = false) || (document.querySelector('#location4').checked = false) || (document.querySelector('#location5').checked = false) || (document.querySelector('#location6').checked = false);{
+  var el7 = document.querySelector('.invalid-villes');
 
-//     var el7 = document.querySelector('.invalid-villes');
-//     el7.style.display = "block";
-//   }
+  const villes = document.querySelectorAll("input[type='radio']");
 
-//   return true;
-// }
+  const j = villes.length;
+
+  let resultChecked = false;
+
+  for(let i=0; i<j; i++){
+ 
+      if(villes[i].checked === true){
+
+           resultChecked = true;
+
+           break;
+
+      }
+
+  }
+
+  if(resultChecked === false){
+
+      return el7.style.display = "block";
+
+  }else{
+
+     el7.style.display = "block";
+
+     return resultChecked;
+
+  }
+
+}
 
 function verifCheckbox (checkbox){ //vérification de la case obligatoire à cocher
 
