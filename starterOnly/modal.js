@@ -40,17 +40,8 @@ document.querySelector(".btn-submit").addEventListener("click", function(event){
   const participationValue = document.querySelector("#quantity").value;
   const checkboxValue = document.querySelector("#checkbox1").value;
 
-
-  // const verifLastname = verifLastname(lastnameValue);
-  // const verifEmail = verifEmail(emailValue);
-  // const verifDdn = verifDdn(ddnValue);
-  // const verifParticipation = verifParticipation(participationValue);
-  // const verifVilles = verifVilles(villesValue);
-  // const verifCheckbox = verifCheckbox(checkboxValue);
-
-
   //Processus de validation de chaque éléments, si tout est validé, affiche le message dans modal-valid
-  if(verifFirstname(firstnameValue) === true && verifLastname(lastnameValue) === true && verifDdn(ddnValue) === true && verifParticipation(participationValue) === true && verifVilles() === true && verifCheckbox(checkboxValue) === true){
+  if(verifFirstname(firstnameValue) === true && verifLastname(lastnameValue) === true && verifEmail(emailValue) === true && verifDdn(ddnValue) === true && verifParticipation(participationValue) === true && verifVilles() === true && verifCheckbox(checkboxValue) === true){
     var el3 = document.querySelector('.modal-valid');
     el3.style.display = "block";
     
@@ -88,44 +79,65 @@ function verifLastname (lastname){ //vérification du nom
 
   }else{
 
-      el5.style.display ="none";
+      el5.style.display = "none";
       return true;
-  }
-
-  return true
-}
-
-function verifEmail (email){ //vérification du mail
-
-  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if(email.value.match(mailformat))
-  {
-    return true;
-  }
-  else
-  {
-    var el6 = document.querySelector('.invalid-mail');
-    el5.style.display = "block";
-  }
-}
-
-function verifDdn (ddn){ //vérification de la date de naissance
-
-  if(ddn === ""){
-
-    var el5 = document.querySelector('.invalid-ddn');
-    el5.style.display = "block";
   }
 
   return true;
 }
 
+function verifEmail (email){ //vérification du mail
+
+  var el6 = document.querySelector('.invalid-mail');
+
+  var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  if(email.value.match(mailformat)){
+
+    el6.style.display = "none";
+    return true;
+
+  }else{
+
+    return el6.style.display = "block";
+  }
+}
+
+function verifDdn (ddn){ //vérification de la date de naissance
+
+  var el7 = document.querySelector('.invalid-ddn');
+
+  //Conversion de la date en JJ/MM/YYYY et mise en place d'une fourchette d'années
+
+  const dateFormat = new Date(ddnValue);
+
+  const dateFormatYear = dateFormat.getFullYear(); 
+
+  if(ddn === "" || dateFormatYear < 1920 || dateFormatYear > 2003){
+
+    return el7.style.display = "block";
+
+  }else{
+
+      el7.style.display = "none";
+      return true;
+
+  }
+
+  return true
+}
+
 function verifParticipation (participation){ //vérification des participations
+
+  var el8 = document.querySelector('.invalid-participation');
 
   if(participation === ""){
 
-    var el6 = document.querySelector('.invalid-particioation');
-    el6.style.display = "block";
+  return el8.style.display = "block";
+  }else{
+
+    el8.style.display = "none";
+    return true;
   }
 
   return true;
@@ -133,7 +145,7 @@ function verifParticipation (participation){ //vérification des participations
 
 function verifVilles(){ //vérification de la ville
 
-  var el7 = document.querySelector('.invalid-villes');
+  var el9 = document.querySelector('.invalid-villes');
 
   const villes = document.querySelectorAll("input[type='radio']");
 
@@ -155,11 +167,11 @@ function verifVilles(){ //vérification de la ville
 
   if(resultChecked === false){
 
-      return el7.style.display = "block";
+      return el9.style.display = "block";
 
   }else{
 
-     el7.style.display = "block";
+     el9.style.display = "block";
 
      return resultChecked;
 
@@ -169,7 +181,15 @@ function verifVilles(){ //vérification de la ville
 
 function verifCheckbox (checkbox){ //vérification de la case obligatoire à cocher
 
+var el10 = document.querySelector("#checkbox1")
+
   if(document.getElementById("#checkbox1").checked === true)
 
-  return false;
+  return true;
+
+  else{
+
+  el10.style.display = "block";
+
+}
 }
