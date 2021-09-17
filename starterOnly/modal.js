@@ -38,10 +38,18 @@ document.querySelector(".btn-submit").addEventListener("click", function(event){
   const emailValue = document.querySelector("#email").value;
   const ddnValue = document.querySelector("#birthdate").value;
   const participationValue = document.querySelector("#quantity").value;
-  const checkboxValue = document.querySelector("#checkbox1").value;
+
 
   //Processus de validation de chaque éléments, si tout est validé, affiche le message dans modal-valid
-  if(verifFirstname(firstnameValue) === true && verifLastname(lastnameValue) === true && verifEmail(emailValue) === true && verifDdn(ddnValue) === true && verifParticipation(participationValue) === true && verifVilles() === true && verifCheckbox(checkboxValue) === true){
+  verifFirstname(firstnameValue);
+  verifLastname(lastnameValue);
+  verifEmail(emailValue);
+  verifDdn(ddnValue);
+  verifParticipation(participationValue);
+  verifVilles();
+  verifCheckbox();
+  
+  if(verifFirstname(firstnameValue) === true && verifLastname(lastnameValue) === true && verifEmail(emailValue) === true && verifDdn(ddnValue) === true && verifParticipation(participationValue) === true && verifVilles() === true && verifCheckbox() === true){
     var el3 = document.querySelector('.modal-valid');
     el3.style.display = "block";
     
@@ -65,12 +73,10 @@ function verifFirstname (firstname){ //vérification du prénom, suivre ce princ
      return true;
 
   }
-
-  return true;
 }
 
 function verifLastname (lastname){ //vérification du nom
-
+  
   var el5 = document.querySelector('.invalid-nom');
 
   if(lastname === "" || lastname.length < 2){
@@ -82,8 +88,6 @@ function verifLastname (lastname){ //vérification du nom
       el5.style.display = "none";
       return true;
   }
-
-  return true;
 }
 
 function verifEmail (email){ //vérification du mail
@@ -92,8 +96,7 @@ function verifEmail (email){ //vérification du mail
 
   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  if(email.value.match(mailformat)){
-
+  if(email.match(mailformat)){
     el6.style.display = "none";
     return true;
 
@@ -109,7 +112,7 @@ function verifDdn (ddn){ //vérification de la date de naissance
 
   //Conversion de la date en JJ/MM/YYYY et mise en place d'une fourchette d'années
 
-  const dateFormat = new Date(ddnValue);
+  const dateFormat = new Date(ddn);
 
   const dateFormatYear = dateFormat.getFullYear(); 
 
@@ -123,8 +126,6 @@ function verifDdn (ddn){ //vérification de la date de naissance
       return true;
 
   }
-
-  return true
 }
 
 function verifParticipation (participation){ //vérification des participations
@@ -139,8 +140,6 @@ function verifParticipation (participation){ //vérification des participations
     el8.style.display = "none";
     return true;
   }
-
-  return true;
 }
 
 function verifVilles(){ //vérification de la ville
@@ -162,34 +161,36 @@ function verifVilles(){ //vérification de la ville
            break;
 
       }
-
   }
+
 
   if(resultChecked === false){
 
-      return el9.style.display = "block";
+    el9.style.display = "block";
+
+    return resultChecked;
 
   }else{
 
-     el9.style.display = "block";
+     el9.style.display = "none";
 
      return resultChecked;
 
   }
-
 }
 
-function verifCheckbox (checkbox){ //vérification de la case obligatoire à cocher
+function verifCheckbox(){ //vérification de la case obligatoire à cocher
 
-var el10 = document.querySelector("#checkbox1")
+var el10 = document.querySelector(".invalid-checkbox");
 
-  if(document.getElementById("#checkbox1").checked === true)
+  if(document.querySelector("#checkbox1").checked === true){
 
+  el10.style.display = "none";
   return true;
 
-  else{
+   }else{
 
-  el10.style.display = "block";
+  return el10.style.display = "block";
 
-}
+ }
 }
