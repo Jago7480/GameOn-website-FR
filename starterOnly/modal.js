@@ -22,10 +22,18 @@ function launchModal() {
 
 //modifications apportées
 
-//close modal form
+//Fermer le formulaire
 var el = document.querySelector('.close');
 
 el.addEventListener('click', function () {
+  var el2 = document.querySelector('.bground');
+  el2.style.display = "none";
+});
+
+//Fermer le formulaire après validation
+var el11 = document.querySelector('.close-valid');
+
+el11.addEventListener('click', function () {
   var el2 = document.querySelector('.bground');
   el2.style.display = "none";
 });
@@ -51,7 +59,7 @@ document.querySelector(".btn-submit").addEventListener("click", function(event){
   
   if(verifFirstname(firstnameValue) === true && verifLastname(lastnameValue) === true && verifEmail(emailValue) === true && verifDdn(ddnValue) === true && verifParticipation(participationValue) === true && verifVilles() === true && verifCheckbox() === true){
     var el3 = document.querySelector('.modal-valid');
-    el3.style.display = "block";
+    el3.style.display = "flex";
     
     var el4 = document.querySelector('.formulaire'); // Est "sensé" retirer tous le formulaire pour ne laisser que le message de validation
     el4.style.display = "none";

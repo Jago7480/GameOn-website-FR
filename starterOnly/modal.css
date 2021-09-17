@@ -27,7 +27,7 @@ p {
 }
 
 h5 {
-  font-size: 18px;
+
 }
 
 h6 {
@@ -170,7 +170,10 @@ main {
 
 .modal-valid {
   display: none;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 700px;
 }
 
 .formulaire {
@@ -399,6 +402,19 @@ input[data-error]::after {
 
 .invalid-checkbox {
   display: none;
+}
+
+/* style bouton fermer après validation */
+.close-valid {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
 }
 
 /* custom select styles */
