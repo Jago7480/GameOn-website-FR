@@ -17,7 +17,7 @@ body {
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -72,6 +72,7 @@ img {
   color: #ffffff;
   border-radius: 15px;
   text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 .topnav a.active {
