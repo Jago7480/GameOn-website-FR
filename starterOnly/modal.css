@@ -21,13 +21,18 @@ body {
   margin: 0 auto;
 }
 
+.fa {
+  color: red;
+}
+
+.topnav .icon:hover .fa {
+  color: white;
+}
+
+
 p {
   margin-bottom: 0;
   padding: 0.5vw;
-}
-
-h5 {
-
 }
 
 h6 {
@@ -66,6 +71,7 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline;
 }
 
 .topnav a.active {
@@ -166,14 +172,19 @@ main {
   font-family: var(--font-slab);
 }
 
-/* Modal form */
+/* Modification du formulaire */
 
 .modal-valid {
   display: none;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   height: 700px;
+}
+
+.message-valid {
+  margin-top: 300px;
+  text-align: center;
 }
 
 .formulaire {
@@ -267,12 +278,11 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;

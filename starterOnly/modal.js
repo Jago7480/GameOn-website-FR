@@ -73,7 +73,7 @@ function verifFirstname (firstname){ //vérification du prénom, suivre ce princ
 
   if(firstname === "" || firstname.length < 2){
 
-    return el5.style.display = "block";
+  return el5.style.display = "block";
 
   }else{
 
@@ -89,7 +89,7 @@ function verifLastname (lastname){ //vérification du nom
 
   if(lastname === "" || lastname.length < 2){
 
-    return el5.style.display = "block";
+  return el5.style.display = "block";
 
   }else{
 
