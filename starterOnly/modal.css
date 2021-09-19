@@ -35,6 +35,13 @@ p {
   padding: 0.5vw;
 }
 
+h5 {
+  margin-bottom: 0;
+  padding: 0.5vw;
+  font-size: larger;
+  font-weight: normal;
+}
+
 h6 {
   font-size: 14px;
   font-weight: normal;
